@@ -9,11 +9,62 @@
 </head>
 <body>
 
+	<header data-ng-controller="InfoCtrl">
+		<img data-ng-src="{{ data.avatar_url }}" alt="{{ data.name }}" width="80" height="80">
+		<a href="{{ data.html_url }}">
+			<strong>{{ data.login }}</strong>
+		</a><br>
+		<small>{{ data.name }}, {{ data.location }}</small><br>
+		<a href="{{ data.blog }}">Visit my blog</a>
+		<div>
+			Public repositories: {{ data.public_repos }}
+		</div>
+	</header>
+
+	<hr>
+
+	<nav data-ng-controller="ReposCtrl">
+		<ul>
+			<li data-ng-repeat="repo in repos">
+				<strong>{{ repo.name }}</strong>
+				<a href="{{ repo.html_url }}">
+					<small>Repository</small>
+				</a>
+				<a data-ng-if="repo.homepage" href="{{ repo.homepage }}">
+					<small>Homepage</small>
+				</a>
+				<div>{{ repo.description }}</div>
+				<div>
+					<input type="text" disabled="disabled" value="{{ repo.ssh_url }}">
+				</div>
+				<div>
+					Created: {{ repo.created_at | date:'fullDate' }} &mdash; Updated: {{ repo.updated_at | date:'fullDate' }}
+				</div>
+				<div>
+					<span data-ng-if="repo.watchers > 1">Watchers: {{ repo.watchers }}</span>
+					<span data-ng-if="repo.forks">Forks: {{ repo.forks }}</span>
+				</div>
+				<hr>
+			</li>
+		</ul>
+	</nav>
+
+	<hr>
+
+	<footer data-ng-controller="FooterCtrl">
+		&copy; {{ year }} &middot; {{ hint }}
+	</footer>
+
 	<script src="bower_components/angular-unstable/angular.js"></script>
 	<script src="assets/scripts/app.js"></script>
 
-	<!-- Controller -->
-	<script src="assets/scripts/controller/repo-ctrl.js"></script>
+	<!-- Services -->
+	<script src="assets/scripts/service/github-api.js"></script>
+
+	<!-- Controllers -->
+	<script src="assets/scripts/controller/repos-ctrl.js"></script>
+	<script src="assets/scripts/controller/info-ctrl.js"></script>
+	<script src="assets/scripts/controller/footer-ctrl.js"></script>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 angular
-	.module('ghSwag', ['ng'])
-	.config(['$routeProvider', function ($routeProvider) {
+	.module('ghSwag', [])
 
-		// ...
-
-	}]);
+	/*
+	 * Defining some basic values
+	**/
+	.value('ghUser', 'herschel666');
