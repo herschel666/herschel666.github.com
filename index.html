@@ -1,37 +1,19 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>herschel666</title>
-		<style type="text/css">
-			body {
-				background-color: #021700;
-				}
-				span {
-					color: #12ff00;
-					}
-		</style>		
-	</head>
-	<body>
-		<span>&#9611;</span>
-		
-		<script>
-			(function (win, doc, undefined) {
-			
-				var elem = doc.getElementsByTagName('span')[0],
-					_style = elem.style,
-				
-					blink = function () {
-						_style.display = _style.display === 'none' ?
-							'block' :
-							'none';
-						
-						setTimeout(blink, 400);
-					};
-					
-					setTimeout(blink, 400);
-			
-			})(window, document);
-		</script>
-	</body>
+<html lang="en" ng-app="ghSwag">
+<head>
+	<meta charset"=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>herschel666</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/styles/main.css">
+</head>
+<body>
+
+	<script src="bower_components/angular-unstable/angular.js"></script>
+	<script src="assets/scripts/app.js"></script>
+
+	<!-- Controller -->
+	<script src="assets/scripts/controller/repo-ctrl.js"></script>
+
+</body>
 </html>
