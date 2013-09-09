@@ -17,6 +17,7 @@
 				return $http({
 					method: 'JSONP',
 					url: 'https://api.github.com/users/' + userName + '?callback=JSON_CALLBACK',
+					// url: 'data/user.txt?callback=JSON_CALLBACK',
 					cache: $templateCache,
 					callback: 'JSON_CALLBACK'
 				});
@@ -36,6 +37,7 @@
 				return $http({
 					method: 'JSONP',
 					url: 'https://api.github.com/users/' + userName + '/repos?callback=JSON_CALLBACK',
+					// url: 'data/repos.txt?callback=JSON_CALLBACK',
 					cache: $templateCache
 				});
 			}

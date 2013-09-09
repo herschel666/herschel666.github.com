@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="ghSwag">
 <head>
-	<meta charset"=utf-8">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>herschel666</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/styles/main.css">
 </head>
-<body>
+<body ng-cloak class="ng-cloak">
 
-	<header data-ng-controller="InfoCtrl">
-		<img data-ng-src="{{ data.avatar_url }}" alt="{{ data.name }}" width="80" height="80">
-		<a href="{{ data.html_url }}">
-			<strong>{{ data.login }}</strong>
-		</a><br>
-		<small>{{ data.name }}, {{ data.location }}</small><br>
-		<a href="{{ data.blog }}">Visit my blog</a>
-		<div>
-			Public repositories: {{ data.public_repos }}
+	<header data-ng-controller="InfoCtrl" class="header frame-elem clearfix">
+		<div class="pull-left header--image-wrap">
+			<img data-ng-src="{{ data.avatar_url }}"
+				alt="{{ data.name }}"
+				width="80"
+				height="80"
+				class="header--image-wrap--img">
+		</div>
+		<div class="header--content pull-left">
+			<h1 class="header--content--heading">
+				<a href="{{ data.html_url }}" class="text-link">{{ data.login }}</a>
+			</h1>
+			<div class="header--content--description">
+				{{ data.name }}, {{ data.location }}
+			</div>
+			<div class="header--content--description">
+				&raquo; <a href="{{ data.blog }}" class="text-link">visit my blog</a>
+			</div>
 		</div>
 	</header>
 
-	<hr>
+	<section data-ng-controller="ReposCtrl" class="repo-list">
+		<div data-ng-repeat="repo in repos | ownRepo"
+			class="repo-list--item"
+			data-ng-class-even="'is-even'"
+			data-ng-animate="{enter: 'is-inserted'}">
+			<h2 class="repo-list--item--heading repo-list--item--block">{{ repo.name }}</h2>
+			<div class="repo-list--item--block">
+				<a href="{{ repo.html_url }}" class="pill">Repository</a>
+				<a data-ng-if="repo.homepage" href="{{ repo.homepage }}" class="pill">Homepage</a>
+			</div>
+			<div class="repo-list--item--block">{{ repo.description }}</div>
+			<div class="repo-list--item--block pale">
+				<span data-ng-if="repo.watchers > 1" class="repo-list--item--meta">
+					Watchers: <b>{{ repo.watchers }}</b>
+				</span>
+				<span data-ng-if="repo.forks" class="repo-list--item--meta">
+					Forks: <b>{{ repo.forks }}</b>
+				</span>
+			</div>
+		</div>
+	</section>
 
-	<nav data-ng-controller="ReposCtrl">
-		<ul>
-			<li data-ng-repeat="repo in repos">
-				<strong>{{ repo.name }}</strong>
-				<a href="{{ repo.html_url }}">
-					<small>Repository</small>
-				</a>
-				<a data-ng-if="repo.homepage" href="{{ repo.homepage }}">
-					<small>Homepage</small>
-				</a>
-				<div>{{ repo.description }}</div>
-				<div>
-					<input type="text" disabled="disabled" value="{{ repo.ssh_url }}">
-				</div>
-				<div>
-					Created: {{ repo.created_at | date:'fullDate' }} &mdash; Updated: {{ repo.updated_at | date:'fullDate' }}
-				</div>
-				<div>
-					<span data-ng-if="repo.watchers > 1">Watchers: {{ repo.watchers }}</span>
-					<span data-ng-if="repo.forks">Forks: {{ repo.forks }}</span>
-				</div>
-				<hr>
-			</li>
-		</ul>
-	</nav>
-
-	<hr>
-
-	<footer data-ng-controller="FooterCtrl">
-		&copy; {{ year }} &middot; {{ hint }}
+	<footer data-ng-controller="FooterCtrl" class="footer frame-elem">
+		<div>&copy; {{ year }} &middot; {{ hint }}</div>
 	</footer>
 
 	<script src="bower_components/angular-unstable/angular.js"></script>
@@ -65,6 +66,9 @@
 	<script src="assets/scripts/controller/repos-ctrl.js"></script>
 	<script src="assets/scripts/controller/info-ctrl.js"></script>
 	<script src="assets/scripts/controller/footer-ctrl.js"></script>
+
+	<!-- Filters -->
+	<script src="assets/scripts/filter/own-repo.js"></script>
 
 </body>
 </html>
