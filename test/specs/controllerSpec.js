@@ -45,11 +45,16 @@ describe('GH-Swag-Controller', function () {
 
 		it('should have repos-property', function () {
 			expect($scope.repos).toBeDefined();
+			expect($scope.loading).toBeDefined();
 		});
 
 		it('should fetch repos after initialization', function () {
 			expect($scope.repos[0].id).toEqual(1234);
 			expect($scope.repos[1].name).toEqual('ipsum');
+		});
+
+		it('should set loading-state to false after loading', function () {
+			expect($scope.loading).toEqual(false);
 		});
 
 	});

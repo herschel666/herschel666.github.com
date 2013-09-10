@@ -7,6 +7,22 @@ module.exports = function (grunt) {
 		styles: 'assets/styles/',
 		scripts: 'assets/scripts/',
 
+		banner: [
+			'/*!',
+			' * <%= pkg.name %> - v<%= pkg.version %>',
+			' *',
+			' * <%= grunt.template.today("yyyy-mm-dd") %>',
+			' *',
+			' * <%= pkg.description %>',
+			' *',
+			' * <%= pkg.homepage %>',
+			' *',
+			' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;',
+			' * Licensed <%= pkg.license %>',
+			'**/',
+			''
+		].join('\n'),
+
 		sass: {
 			prod: {
 				options: {
@@ -15,6 +31,16 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'<%= styles %>main.css': '<%= styles %>main.scss'
+				}
+			},
+			dist: {
+				options: {
+					style: 'compressed',
+					precision: 6,
+					banner: '<%= banner %>'
+				},
+				files: {
+					'<%= styles %>main.min.css': '<%= styles %>main.scss'
 				}
 			}
 		},
@@ -37,7 +63,7 @@ module.exports = function (grunt) {
 
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: '<%= banner %>'
 			},
 			build: {
 				files: {
@@ -53,6 +79,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	// grunt.registerTask('default', ['uglify']);
+	grunt.registerTask('build', ['uglify:build', 'sass:dist']);
 
 };

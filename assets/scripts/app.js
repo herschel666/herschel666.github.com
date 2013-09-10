@@ -1,7 +1,11 @@
-angular
-	.module('ghSwag', [])
+(function (angular) {
 
-	/*
-	 * Defining some basic values
-	**/
-	.value('ghUser', 'herschel666');
+	angular
+		.module('ghSwag', [])
+
+		/*
+		 * Defining the relevant user
+		**/
+		.value('ghUser', 'herschel666');
+
+})(angular);

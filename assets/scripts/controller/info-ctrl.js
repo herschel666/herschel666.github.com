@@ -1,5 +1,8 @@
 (function (app) {
 
+	/*
+	 * Serving the user-data
+	**/
 	app.controller('InfoCtrl', ['$scope', 'ghUser', 'GitHubApiService', function ($scope, ghUser, GitHubApiService) {
 		$scope.data = null;
 		GitHubApiService

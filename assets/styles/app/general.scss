@@ -57,3 +57,22 @@ a:visited {
 	padding: em(12, 14);
 	background-color: rgba(255,255,255,.5);
 	}
+.loader,
+.loader--inner {
+	width: em(20, 14);
+	height: em(20, 14);
+	}
+.loader {
+	margin: em(20, 14) auto;
+	overflow: hidden;
+	border: 1px solid $border-loading;
+	outline: 1px solid rgba(0,0,0,.15);
+	}
+.loader--inner {
+	display: block;
+	background-color: rgba(0,0,0,.4);
+	@include animation-name(loading);
+	@include animation-duration(2s);
+	@include animation-timing-function(linear);
+	@include animation-iteration-count(infinite);
+	}

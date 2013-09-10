@@ -1,5 +1,8 @@
 (function (app) {
 
+	/*
+	 * Getting data from the GitHub-API
+	**/
 	app.service('GitHubApiService', ['$http', '$templateCache', function ($http, $templateCache) {
 		return {
 

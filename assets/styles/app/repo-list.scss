@@ -14,7 +14,7 @@
 	&.is-inserted {
 		opacity: 0;
 		@include transform (translateX(8%));
-		@include transition (all .3s);
+		@include transition (all .3s ease-in-out .4s);
 		}
 
 	&.is-inserted-active {

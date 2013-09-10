@@ -5,7 +5,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>herschel666</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="GitHub-Repositories of herschel666 (Emanuel Kluge)">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
 	<link rel="stylesheet" href="assets/styles/main.css">
+	<meta http-equiv="cleartype" content="on">
 </head>
 <body ng-cloak class="ng-cloak">
 
@@ -32,6 +36,7 @@
 
 	<section data-ng-controller="ReposCtrl" class="repo-list">
 		<div data-ng-repeat="repo in repos | ownRepo"
+			data-ng-hide="loading"
 			class="repo-list--item"
 			data-ng-class-even="'is-even'"
 			data-ng-animate="{enter: 'is-inserted'}">
@@ -49,6 +54,9 @@
 					Forks: <b>{{ repo.forks }}</b>
 				</span>
 			</div>
+		</div>
+		<div class="loader" data-ng-show="loading">
+			<i class="loader--inner"></i>
 		</div>
 	</section>
 
@@ -69,6 +77,15 @@
 
 	<!-- Filters -->
 	<script src="assets/scripts/filter/own-repo.js"></script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-1579881-21', 'herschel666.github.io');
+		ga('send', 'pageview');
+	</script>
 
 </body>
 </html>

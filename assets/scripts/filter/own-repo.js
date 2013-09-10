@@ -1,5 +1,8 @@
 (function (app) {
 
+	/*
+	 * Filtering forks out of repo-lis.
+	**/
 	app.filter('ownRepo', function () {
 		return function (data) {
 
