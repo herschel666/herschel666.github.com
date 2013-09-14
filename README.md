@@ -1,2 +1,2 @@
-[Personal GitHug page](http://herschel666.github.io/)
+[Personal GitHub page](http://herschel666.github.io/)
 =====================================================
